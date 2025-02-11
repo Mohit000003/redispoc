@@ -54,21 +54,22 @@ sudo systemctl status redis
 ### **Step 5: Configure Redis**
 To set up Uusername and password ( for better security) for Redis and change its bind address to your private ip so that you can use that internally not allowing access to everyone we can use following steps:-
   
-  ### 1 **Open the Redis configuration file:-**
+  ### 1) **Open the Redis configuration file:-**
 
 ``` bash
 sudo nano /etc/redis/redis.conf
 ```
 ### **Save and Close the file.**
 
- ### 2 **Set a Username and password and we can do it in 2 WAYS :-** 
+ ### 2) **Set a Username and password and we can do it in 2 WAYS :-** 
 
  **1.** **Programmatically/Dynamically Using ACL SETUSER** :- Use the ACL SETUSER command to create or update a user with specific permissions dynamically while Redis is running.
 
 ``` bash
 ACL SETUSER myuser on >mypassword ~* +@all
 ```
-Here repalce myuser and mypassword with strong username and password
+**Note:-** **Here repalce myuser and mypassword with strong username and password**
+
 ```
 myuser: The username being created.
 mypassword: The password associated with the user.
@@ -77,13 +78,13 @@ on: Enables the user.
 +@all:Grants access to all commands
 
 ```
- **2.**  **Statically via the redis.conf File** :- Edit the redis.conf file to define the user.
+ **2.** **Statically via the redis.conf File** :- Edit the redis.conf file to define the user.
 
 ``` bash
 sudo nano /etc/redis/redis.conf
 user myuser on >mypassword ~* +@all
 ```
-**Note:-** Here repalce myuser and mypassword with strong username and password
+**Note:-** **Here repalce myuser and mypassword with strong username and password**
 
 ### **Step 6: Restart Redis:-**
 To apply these changes, restart Redis service:
