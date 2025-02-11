@@ -63,7 +63,7 @@ sudo nano /etc/redis/redis.conf
 
  ### 2 **Set a Username and password and we can do it in 2 WAYS :-** 
 
- **1.** **Programmatically/Dynamically Using ACL SETUSER**:- Use the ACL SETUSER command to create or update a user with specific permissions dynamically while Redis is running.
+ **1.** **Programmatically/Dynamically Using ACL SETUSER** :- Use the ACL SETUSER command to create or update a user with specific permissions dynamically while Redis is running.
 
 ``` bash
 ACL SETUSER myuser on >mypassword ~* +@all
@@ -77,7 +77,7 @@ on: Enables the user.
 +@all:Grants access to all commands
 
 ```
- **2.**  **Statically via the redis.conf File**:- Edit the redis.conf file to define the user.
+ **2.**  **Statically via the redis.conf File** :- Edit the redis.conf file to define the user.
 
 ``` bash
 sudo nano /etc/redis/redis.conf
