@@ -14,18 +14,6 @@
 
 The purpose of this POC is to evaluate Redis (Remote Dictionary Server) which is a  open-source in-memory database that stores data in key-value format. It’s widely used for caching, real-time analytics, message brokering, and more.
 
-## Hardware Pre-requisites
-
-| **Requirement**        | **Details**                  |
-|------------------------|------------------------------|
-| **OS**                 | Ubuntu 24.04 or 22.04 |
-| **RAM**                | 2 GB min.                 |
-| **Disk Space**         | 100 MB or more               |
-| **Processor**          | Dual-core recommended   
-| **Instance used**        | t2.micro
-| **Network**            | Port 6379 open for redis  
-  **SSH**                 |   PORT 22
-
 
 ## Redis Installation on Ubuntu
 
@@ -43,17 +31,16 @@ sudo apt update
 ```
 ### Step 2: Install Redis and check the version 
 
-To install Redis, use the apt package manager
+To install Redis, use the apt package manager and check the version of redis
 
 ``` bash
 sudo apt install redis-server -y
 
 redis-server -v
 ```
-![image](https://github.com/user-attachments/assets/c62b0010-a148-4327-baa3-07bbbc36c77b)
 
 ### Step 3: Start Redis Service
-Run the following command to start the Redis service:
+Run the following command to start the Redis service: When you start the Redis service, it will begin running and be available for use. Enabling Redis ensures it will automatically start every time the system boots, providing persistent availability.
 
 ``` bash
 sudo systemctl status redis
@@ -67,16 +54,16 @@ To confirm that Redis is running successfully, use the following command:
 ``` bash
 sudo systemctl status redis
 ```
-![image](https://github.com/user-attachments/assets/c2233b26-43fe-42e8-9936-facd7de5e103)
+
 
 ### Step 5: Configure Redis
-To set up a password  for Redis and change its bind address to your private ip so that you can use that internally , follow these steps:
+To set up a password  for Redis and change its bind address to your private ip so that you can use that internally not allowing access to everyone we can use following steps  :
 1. Open the Redis configuration file:
 
 ``` bash
 sudo nano /etc/redis/redis.conf
 ```
-![image](https://github.com/user-attachments/assets/17334b7c-ec83-4435-b240-bc31237d9a1c)
+
 
 #### 2. Set a Password:
 Find the line with # requirepass foobared and replace it with:
@@ -84,9 +71,6 @@ Find the line with # requirepass foobared and replace it with:
 ``` bash
 requirepass <your_password>
 ```
-![image](https://github.com/user-attachments/assets/84fa6cde-d041-42ba-8019-e85a8f1dbbf4)
-
-![image](https://github.com/user-attachments/assets/cd456993-9e48-44da-b13c-50ae419887d0)
 
 
 #### 4. Save and Close the file.
@@ -101,24 +85,21 @@ sudo systemctl restart redis
 #### 6. Connect to Redis with Password
 Now, you can authenticate to Redis using the password.
 
-Start the Redis CLI: Here if we directly enter some command after entering cli it will give error as we need to authenicate it other wise it will give error as mentioned in the below screenshot
+Start the Redis CLI: Here if we directly enter some command after entering  into the cli it will give error as we need to authenicate it other wise it will give error as mentioned in the below screenshot
+![image](https://github.com/user-attachments/assets/2ab3355e-5de5-480b-b75e-b843c4444670)
+
 
 ``` bash
 redis-cli
 AUTH <password> 
 ```
-![image](https://github.com/user-attachments/assets/2e890581-a1e0-404e-9c6e-7bfea5c7623b)
-
-![image](https://github.com/user-attachments/assets/751ea85c-468e-4b0b-af9b-91c6fdf7df07)
-
-
 
 or you can try in this way also instead of writing it manually everytime not recommed to do this as it is not best practice to do so
 
 ``` bash
 redis-cli -a your_password_here
 ```
-![image](https://github.com/user-attachments/assets/0a722712-d1be-4277-ab73-a42b4a0344c0)
+
 
 
 
@@ -130,9 +111,9 @@ PING
 ```
 If you see PONG, it means authentication is successful.
 
-![image](https://github.com/user-attachments/assets/2e890581-a1e0-404e-9c6e-7bfea5c7623b)
 
-#### 8. SET and GET values in Redis: (Additional)
+
+#### 8. SET and GET values in Redis (Additional) to check further if it is working fine for Storing and Retrieving Data in Redis :- 
 SET is used to store data in Redis.
 
 ``` bash
@@ -142,7 +123,7 @@ GET is used to retrieve the value stored under the specified key.
 ``` bash
 GET mykey
 ```
- ![image](https://github.com/user-attachments/assets/ceea7339-ddbe-4945-8049-b081f8bf7d7b)
+
 ### Contact Information
 
 | **Name** | **Email address**            |
