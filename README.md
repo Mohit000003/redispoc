@@ -1,16 +1,4 @@
 
-
-
-
-
-# REDIS POC
-
-| **Author**            | **Created on** | **Version** | **Last updated by**       | **Last edited on** | **Reviewer**      |
-|-----------------------|----------------|-------------|----------------------------|---------------------|-------------------|
-| Mohit kumar     | 10-02-2025       | Version 1 | Mohit kumar       | 11-02-2025       | Komal Jaiswal  |
-
-
-
 ## REDIS
 
 The purpose of this POC is to evaluate Redis (Remote Dictionary Server) which is a  open-source in-memory database that stores data in key-value format. It’s widely used for caching, real-time analytics, message brokering, and more.
