@@ -1,4 +1,5 @@
 
+
 # REDIS POC
 
 | **Author**            | **Created on** | **Version** | **Last updated by**       | **Last edited on** | **Reviewer**      |
@@ -58,7 +59,7 @@ To set up Uusername and password ( for better security) for Redis and change its
 ``` bash
 sudo nano /etc/redis/redis.conf
 ```
- #### 1. Save and Close the file.
+ ####  Save and Close the file.
 
  #### 2. Set a Username and password 2 WAYS TO DO IT :-
 
@@ -73,7 +74,8 @@ myuser: The username being created.
 mypassword: The password associated with the user.
 on: Enables the user.
 ~*: Grants access to all keys.
-+@all: Grants access to all commands
++@all:Grants access to all commands
+
 ```
  **2.**  **Statically via the redis.conf File**:- Edit the redis.conf file to define the user.
 
