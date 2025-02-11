@@ -2,6 +2,7 @@
 
 
 
+
 # REDIS POC
 
 | **Author**            | **Created on** | **Version** | **Last updated by**       | **Last edited on** | **Reviewer**      |
@@ -82,11 +83,19 @@ To apply these changes, restart Redis service:
 sudo systemctl restart redis
 ```
 
-#### 6. Connect to Redis with Password
+#### 6. Connect to Redis with Password after entering to the  cli 
+
 Now, you can authenticate to Redis using the password.
 
-Start the Redis CLI: Here if we directly enter some command after entering  into the cli it will give error as we need to authenicate it other wise it will give error as mentioned in the below screenshot
-![image](https://github.com/user-attachments/assets/2ab3355e-5de5-480b-b75e-b843c4444670)
+Start the Redis CLI: Here if we directly enter some command after entering  into the cli it will give error as we need to authenicate it other wise it will show below thing
+
+``` bash
+redis-cli
+Enter something 
+(ERROR) NOAUTH Authentication Required
+```
+
+thats why use the below command to get access inside the redis-cli
 
 
 ``` bash
@@ -138,3 +147,5 @@ GET mykey
 | [Redis Documentation - Installation](https://dev.to/iqquee/how-to-setup-redis-on-linux-4h06) | Document format followed from this link.                 |
 | [Introduction to Redis](https://www.geeksforgeeks.org/introduction-to-redis-server/) | This link gives the Introduction to Redis. |
 | [Redis Documentation - GitHub](https://github.com/snaatak-Zero-Downtime-Crew/Documentation/blob/main/OT%20MS%20Understanding/Database/Redis/Redis%20POC/README.md) | Link to Redis documentation on GitHub. 
+
+
