@@ -24,7 +24,7 @@ Before starting the installation, ensure your system packages are up-to-date.
 ``` bash
 sudo apt update
 ```
-### **Step 2: Install Redis and check the version**
+### **Step 2: Install Redis and check the version:-**
 
 To install Redis, use the apt package manager and check the version of redis
 
@@ -34,7 +34,7 @@ sudo apt install redis-server -y
 redis-server -v
 ```
 
-### **Step 3: Start Redis Service**
+### **Step 3: Start Redis Service:-**
 Run the following command to start the Redis service: When you start the Redis service, it will begin running and be available for use. Enabling Redis ensures it will automatically start every time the system boots, providing persistent availability.
 
 ``` bash
@@ -43,7 +43,7 @@ sudo systemctl status redis
 sudo systemctl enable redis
 ```
 
-### **Step 4: Check Redis Service Status**
+### **Step 4: Check Redis Service Status:-**
 To confirm that Redis is running successfully, use the following command:
 
 ``` bash
@@ -92,7 +92,7 @@ To apply these changes, restart Redis service:
 sudo systemctl restart redis
 ```
 
-###  **Step 7 : - Connect to Redis with username and Password after entering to the  cli:-** 
+### **Step 7 : - Connect to Redis with username and Password after entering to the  cli:-** 
 
 Now, you can authenticate to Redis using the username and  password.
 
