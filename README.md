@@ -1,4 +1,10 @@
 
+# REDIS POC
+
+| **Author**            | **Created on** | **Version** | **Last updated by**       | **Last edited on** | **Reviewer**      |
+|-----------------------|----------------|-------------|----------------------------|---------------------|-------------------|
+| Mohit kumar     | 10-02-2025       | Version 1 | Mohit kumar       | 11-02-2025       | Komal Jaiswal  |
+
 ## REDIS
 
 The purpose of this POC is to evaluate Redis (Remote Dictionary Server) which is a  open-source in-memory database that stores data in key-value format. It’s widely used for caching, real-time analytics, message brokering, and more.
@@ -46,23 +52,36 @@ sudo systemctl status redis
 
 
 ### Step 5: Configure Redis
-To set up a password  for Redis and change its bind address to your private ip so that you can use that internally not allowing access to everyone we can use following steps  :
-1. Open the Redis configuration file:
-
+To set up Uusername and password ( for better security) for Redis and change its bind address to your private ip so that you can use that internally not allowing access to everyone we can use following steps:-
+  
+   Open the Redis configuration file:
 ``` bash
 sudo nano /etc/redis/redis.conf
 ```
+ #### 1. Save and Close the file.
 
+ #### 2. Set a Username and password 2 WAYS TO DO IT :-
 
-#### 2. Set a Password:
-Find the line with # requirepass foobared and replace it with:
+ **1.** **Programmatically/Dynamically Using ACL SETUSER**:- Use the ACL SETUSER command to create or update a user with specific permissions dynamically while Redis is running.
 
 ``` bash
-requirepass <your_password>
+ACL SETUSER myuser on >mypassword ~* +@all
 ```
+Here repalce myuser and mypassword with strong username and password
+```
+myuser: The username being created.
+mypassword: The password associated with the user.
+on: Enables the user.
+~*: Grants access to all keys.
++@all: Grants access to all commands
+```
+ **2.**  **Statically via the redis.conf File**:- Edit the redis.conf file to define the user.
 
-
-#### 4. Save and Close the file.
+``` bash
+sudo nano /etc/redis/redis.conf
+user myuser on >mypassword ~* +@all
+```
+Here repalce myuser and mypassword with strong username and password
 
 #### 5. Restart Redis
 To apply these changes, restart Redis service:
@@ -71,9 +90,9 @@ To apply these changes, restart Redis service:
 sudo systemctl restart redis
 ```
 
-#### 6. Connect to Redis with Password after entering to the  cli 
+#### 6. Connect to Redis with username and Password after entering to the  cli 
 
-Now, you can authenticate to Redis using the password.
+Now, you can authenticate to Redis using the username and  password.
 
 Start the Redis CLI: Here if we directly enter some command after entering  into the cli it will give error as we need to authenicate it other wise it will show below thing
 
@@ -88,16 +107,18 @@ thats why use the below command to get access inside the redis-cli
 
 ``` bash
 redis-cli
-AUTH <password> 
+AUTH <myuser> <mypassword>
+```
+After that you can use below command You should see details about the configured users, including permissions and key patterns
+``` bash
+ACL LIST
 ```
 
-or you can try in this way also instead of writing it manually everytime not recommed to do this as it is not best practice to do so
+or you can try in this way also instead of writing it manually everytime not recommed , Avoid using the -a option or storing passwords in plain text, as it can lead to security vulnerabilities.
 
 ``` bash
-redis-cli -a your_password_here
+redis-cli --user <username> -a <password>
 ```
-
-
 
 
 #### 7. Verify the Connection: 
@@ -135,5 +156,7 @@ GET mykey
 | [Redis Documentation - Installation](https://dev.to/iqquee/how-to-setup-redis-on-linux-4h06) | Document format followed from this link.                 |
 | [Introduction to Redis](https://www.geeksforgeeks.org/introduction-to-redis-server/) | This link gives the Introduction to Redis. |
 | [Redis Documentation - GitHub](https://github.com/snaatak-Zero-Downtime-Crew/Documentation/blob/main/OT%20MS%20Understanding/Database/Redis/Redis%20POC/README.md) | Link to Redis documentation on GitHub. 
+
+
 
 
