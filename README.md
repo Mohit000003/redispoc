@@ -1,165 +1,177 @@
-# **REDIS POC**
 
-
+# VCS Authentication POC
 
 | *Author* | *Created on* | *Version* | *Last updated by*|*Internal Reviewer* |*Reviewer L0* |*Reviewer L1* |*Reviewer L2* |
 |------------|---------------------------|-------------|---------------------|-------------|-------------|-------------|-------------|
 | Mohit Kumar|   10-02-2025             | v1          | Mohit kumar       |  Komal Jaiswal |  |   |      |
 
-## **REDIS**
 
-The purpose of this POC is to evaluate Redis (Remote Dictionary Server) which is a  open-source in-memory database that stores data in key-value format. It’s widely used for caching, real-time analytics, message brokering, and more.
+# Table of Contents
 
-
-## **Redis Installation on Ubuntu**
-
-This document provides step by step guide to install and configure Redis-server on Ubuntu.
-
-
-### **Installation Steps**
-
-### **Step 1: Update System Packages**
-
-Before starting the installation, ensure your system packages are up-to-date.
-
-``` bash
-sudo apt update
-```
-### **Step 2: Install Redis and check the version:-**
-
-To install Redis, use the apt package manager and check the version of redis
-
-``` bash
-sudo apt install redis-server -y
-
-redis-server -v
-```
-
-### **Step 3: Start Redis Service:-**
-Run the following command to start the Redis service: When you start the Redis service, it will begin running and be available for use. Enabling Redis ensures it will automatically start every time the system boots, providing persistent availability.
-
-``` bash
-sudo systemctl status redis
-
-sudo systemctl enable redis
-```
-
-### **Step 4: Check Redis Service Status:-**
-To confirm that Redis is running successfully, use the following command:
-
-``` bash
-sudo systemctl status redis
-```
+- [Introduction](#introduction)  
+- [Understanding Git Authentication](#understanding-git-authentication)  
+- [Pre-Requisites for Git Configuration](#pre-requisites-for-git-configuration)  
+- [Step-by-Step Setup Guide](#step-by-step-setup-guide)  
+- [Best Practices for Git Authentication](#best-practices-for-git-authentication) 
+- [Conclusion](#conclusion)  
+- [Contact Information](#contact-information)  
+- [References](#references)  
 
 
-### **Step 5: Configure Redis**
-To set up Uusername and password ( for better security) for Redis and change its bind address to your private ip so that you can use that internally not allowing access to everyone we can use following steps:-
+
+## Introduction
+Authentication verifies the identity of a user or system, ensuring that only authorized individuals can access resources. It's like a gatekeeper, allowing entry only to those who prove their identity. This process often involves methods such as passwords, SSH keys, tokens, or MFA.
+
+
+## Understanding Git Authentication
+In Git, authentication ensures that only authorized users can access repositories and make changes to them. The following methods are commonly used for Git authentication:
+
+| No. | Method                | Description                                                               |
+| --- | --------------------- | ------------------------------------------------------------------------- |
+| 1   | SSH Keys              | Uses secure key pairs to authenticate users without needing a password.  |
+| 2   | Personal Access Tokens (PATs) | Provides a secure token for access with specific permissions.           |
+| 3   | OAuth Tokens          | Allows login using third-party services for easier authentication.       |
+
+## Pre-Requisites for Git Configuration
+
+
+| No. | Requirements            | Description                                                      |
+|-----|-------------------------|------------------------------------------------------------------|
+| 1.  | Operating System         | Git can be installed on **Windows**, **Mac**, or **Linux**.      |
+| 2.  | Hardware Memory          | Minimum **512 MB of RAM** is required.                           |
+| 3.  | Disk Space               | At least **100 MB of disk space** for Git installation.         |
+| 4.  | Git Installation         | Install **Git** from the official site or using package managers (e.g., `apt`, `brew`, `choco`). |
+| 5.  | Git Configuration        | Configure **user name** and **email** using `git config` for commits. |
+
+
+## Step-by-Step Setup Guide
+
+### How to Create and Use a Personal Access Token for Authentication
+### Step 1: Generate a Personal Access Token:-
+
+1. **Access Account Settings**:  
+  Log in to your GitHub account. Click on your profile picture in the top-right corner and select **"Settings"** from the dropdown menu.
+
+
+2. **Navigate to Developer Settings**:  
+   In the left-hand menu, scroll down and click on **"Developer settings"**. Then, choose **"Personal access tokens"**.
+
+
+
+3. **Generate a New Token**:  
+   Click on the **"Generate new token"** button to create a new token.
+
+
+
+4. **Authenticate Yourself**:  
+   Enter your GitHub password to confirm that you have the authority to create a new token.
+
+
+
+5. **Name the Token**:  
+   In the **"Note"** field, provide a meaningful name for the token (e.g., "Git operations token") to help you identify its purpose later.
+
+
+     6. **Choose Permissions (Scopes)**:  
+   Select the required permissions for the token. For Git-related tasks, enable the **"repo"** scope to allow access to your repositories.
+
+
+
+   7. **Generate and Save the Token**:  
+   Scroll down and click the **"Generate token"** button.  
+
+
+   8. **Copy the Token**:  
+   Once the token is displayed, copy it immediately and save it in  a secure location (e.g., a password manager).  
+   - **Important**: This token will only be shown once. If you lose it, you will need to generate a new one.
+
+
+### Step 2:- Git Configuration and Pushing with Personal Access Token:-
+
+
+ 1. **Open a Terminal (Command Prompt):-**
+     
+     - Open the terminal on your system.
+
+ 2. **Set up your Git username and email:-**
+   
+     ``` bash
+     git config --global user.name "Your Name"
+     git config --global user.email "your_email@example.com"
+     ```
+     - This configures your Git with your personal details, which   will be associated with your commits.
+
+ 3. **Verify the configuration:-**
   
-  ### 1) **Open the Redis configuration file:-**
+    ``` bash
+    git config --list
+    ```
+    - This command will show you the settings to confirm that your username and email have been configured correctly.
 
-``` bash
-sudo nano /etc/redis/redis.conf
-```
-### **Save and Close the file.**
-
- ### 2) **Set a Username and password and we can do it in 2 WAYS :-** 
-
- **1.** **Programmatically/Dynamically Using ACL SETUSER** :- Use the ACL SETUSER command to create or update a user with specific permissions dynamically while Redis is running.
-
-``` bash
-ACL SETUSER myuser on >mypassword ~* +@all
-```
-**Note:-** **Here repalce myuser and mypassword with strong username and password**
-
-```
-myuser: The username being created.
-mypassword: The password associated with the user.
-on: Enables the user.
-~*: Grants access to all keys.
-+@all:Grants access to all commands
-
-```
- **2.** **Statically via the redis.conf File** :- Edit the redis.conf file to define the user.
-
-``` bash
-sudo nano /etc/redis/redis.conf
-user myuser on >mypassword ~* +@all
-```
-**Note:-** **Here repalce myuser and mypassword with strong username and password**
-
-### **Step 6: Restart Redis:-**
-To apply these changes, restart Redis service:
-
-``` bash
-sudo systemctl restart redis
-```
-
-### **Step 7 : - Connect to Redis with username and Password after entering to the  cli:-** 
-
-Now, you can authenticate to Redis using the username and  password.
-
-Start the Redis CLI: Here if we directly enter some command after entering  into the cli it will give error as we need to authenicate it other wise it will show below thing
-
-``` bash
-redis-cli
-Enter something 
-(ERROR) NOAUTH Authentication Required
-```
-
-thats why use the below command to get access inside the redis-cli
+  
+ 4. **Clone the Repository using HTTPS and use Personal Access Token:-**
 
 
-``` bash
-redis-cli
-AUTH <myuser> <mypassword>
-```
-After that you can use below command You should see details about the configured users, including permissions and key patterns
-``` bash
-ACL LIST
-```
-
-or you can try in this way also instead of writing it manually everytime not recommed , Avoid using the -a option or storing passwords in plain text, as it can lead to security vulnerabilities.
-
-``` bash
-redis-cli --user <username> -a <password>
-```
+ 
+    - Use the HTTPS URL of the repository.
+    
 
 
-### **Step 8:- Verify the Connection:-** 
-After authenticating, you can test the connection by running a simple command PING:
+    ``` bash 
+    git clone https://github.com/username/repository.git
 
-``` bash
-PING
-```
-If you see PONG, it means authentication is successful.
-
+    ```
+    
+6. **Push changes to the repository:-**
 
 
-### **Step 9:- SET and GET values in Redis (Additional) to check further if it is working fine for Storing and Retrieving Data in Redis :-**
-SET is used to store data in Redis.
+   - After making changes to your repository, use git push to push the changes to the remote repository.
 
-``` bash
-SET mykey "<value>"
-```
-GET is used to retrieve the value stored under the specified key.
-``` bash
-GET mykey
-```
 
-### Contact Information
+   ``` bash
+   git push origin main
+
+   ```
+
+- When prompted for your username, enter your GitHub username.
+- When prompted for the password, use your Personal Access Token (not your GitHub password). The token is used instead of your password for security purposes
+
+
+## Best Practices for Git Authentication
+
+
+- **Use SSH Keys for Authentication:-**
+SSH keys provide a more secure and efficient method of authentication compared to passwords. They are harder to compromise and eliminate the need to remember passwords.
+
+- **Enable Two-Factor Authentication (2FA):-**
+Adding an extra layer of security with 2FA ensures that even if your password is compromised, the attacker still can't access your Git repository without the second authentication factor.
+
+- **Use Personal Access Tokens (PATs) for HTTPS:-**
+PATs are a safer alternative to using passwords for HTTPS Git operations. They are more secure, can be scoped to specific permissions, and can be revoked if compromised.
+
+- **Rotate SSH Keys and Tokens Regularly-**
+Regularly rotating your SSH keys and tokens helps mitigate the risk of compromise, especially when an employee leaves or you suspect a key may have been exposed.
+
+- **Limit Access with Least Privilege:-**
+Only grant users the minimal level of access they need to perform their tasks. This reduces the risk of unintended or malicious changes to your repositories.
+
+
+## Conclusion 
+Git, a popular version control system (VCS), supports various authentication methods for secure repository access. Common methods include SSH keys, HTTPS with username and password, and personal access tokens. These ensure secure and authenticated interactions, maintaining code integrity and enabling efficient collaboration across development teams.
+
+
+## Contact Information
 
 | **Name** | **Email address**            |
 |----------|-------------------------------|
 | Mohit kumar   |  mohit.kumar@mygurukulam.co          |
 
+##  References
 
-### References
+| Links | Description      |
+|-----  |--------------------------|
+| https://www.squash.io/how-to-authenticate-git-push-with-github-using-a-token/  |  For step by step guide for git personal acess token    | 
 
-| Link                                                                                                           | Description                                               |
-|---------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| [Redis Documentation - Installation](https://dev.to/iqquee/how-to-setup-redis-on-linux-4h06) | Document format followed from this link.                 |
-| [Introduction to Redis](https://www.geeksforgeeks.org/introduction-to-redis-server/) | This link gives the Introduction to Redis. |
-| [Redis Documentation - GitHub](https://github.com/snaatak-Zero-Downtime-Crew/Documentation/blob/main/OT%20MS%20Understanding/Database/Redis/Redis%20POC/README.md) | Link to Redis documentation on GitHub. 
 
 
 
