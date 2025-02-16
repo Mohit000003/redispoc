@@ -14,6 +14,15 @@ ___
 # Purpose
 The purpose of this document is to provide a comprehensive guide on the Salary API, a Java-based microservice responsible for managing all salary-related transactions and records within the **[OT-Microservices](https://github.com/OT-MICROSERVICES/salary-api)** stack 
 This platform-independent application can run on multiple operating systems with **[Java Runtime](https://www.java.com/en/download/manual.jsp)** as a requirement.
+___
+# System Requirements
+
+|   System Requirement              |             Minimum                        |
+|-----------------------------------|--------------------------------------------|
+| Processor/Instance Type           |             Dual Core/t2.medium            | 
+| RAM                               |               4GB                          |
+| Disk Space                        |               16GB                         |            
+| OS Required | Ubuntu   |
 
 
 ___
@@ -21,13 +30,14 @@ ___
 The Salary API application has some database, cache manager and package dependencies. Some of the dependencies are optional and some are mandatory. 
 To compile the application, we only need `maven` as a build tool, but for running the application following things are required:-
 ### **Mandatory Dependencies**
-- **[ScyllaDB](https://www.scylladb.com/):** Primary database for salary records.
+- **[ScyllaDB](https://www.scylladb.com/):** Primary database for storing salary records.
 - **[Redis](https://redis.io/):** Cache manager for efficient data retrieval.
-- **[Migrate](https://github.com/golang-migrate/migrate):** Database schema migration tool.
-- **Java Runtime Environment (JRE):** Required to execute the application.
-
+- **[Migrate](https://github.com/golang-migrate/migrate):** Database schema migration tool to manage database changes.
+- **[Java Runtime Environment (JRE)](https://adoptium.net/):** Required to execute the compiled application.
+  
 ### **Development Dependency**
-- **[Maven](https://maven.apache.org/):** Package manager and build tool.
+- **[Maven](https://maven.apache.org/):** Package manager and build tool for compiling and packaging the application.
+- **[Java Development Kit (JDK)](https://adoptium.net/):** Required to compile Java source code into bytecode.
 
 ___
 
@@ -50,15 +60,7 @@ ___
     - Jacoco: Code coverage reporting.
     - Checkstyle: Code quality enforcement.
 ___ 
-# System Requirements
 
-|   System Requirement              |             Minimum                        |
-|-----------------------------------|--------------------------------------------|
-| Processor/Instance Type           |             Dual Core/t2.medium            | 
-| RAM                               |               4GB                          |
-| Disk Space                        |               16GB                         |            
-| OS Required | Ubuntu   |
-___
 # Important Ports
 
 ## Inbound Ports 
