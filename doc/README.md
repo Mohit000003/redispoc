@@ -135,6 +135,23 @@ ___
 | `/actuator/health`             | GET        | Endpoint for providing shallow health check information about application health and readiness|
 
 
+## Contact Information
+
+| **Name** | **Email address**            |
+|----------|-------------------------------|
+| Mohit kumar   |  mohit.kumar@mygurukulam.co          |
+
+## References
+
+|     Description                  | References  
+| ---------------------------------| ------------------------------------------------------------------- |
+|     Salary POC      | https://github.com/snaatak-Zero-Downtime-Crew/Documentation/blob/Nikita-SCRUM-8/OT%20MS%20Understanding/Applications/Salary/POC/README.md |
+|     Salary Documentation         | |  
+
+
+
+
+
 
 
 
