@@ -6,9 +6,6 @@
 
 
 
-
-
-
 | *Author* | *Created on* | *Version* | *Last updated by*|*Internal Reviewer* |*Reviewer L0* |*Reviewer L1* |*Reviewer L2* |
 |------------|---------------------------|-------------|---------------------|-------------|-------------|-------------|-------------|
 | Mohit Kumar|   10-02-2025             | v1          | Mohit kumar       |  Komal Jaiswal |  |   |      |
@@ -105,9 +102,43 @@ ___
 | Redis | ❌ | ✅ |
 | Migrate | ❌ | ✅ |
 
-## Architecture
+# Architecture
 
 ![image](https://github.com/user-attachments/assets/62b88055-9d8f-4f07-8ac8-ae341bee59ce)
 
 
+# SETUP API  
+For a comprehensive, step-by-step guide on setting up the API, follow this link: [Salary Setup](https://github.com/snaatak-Zero-Downtime-Crew/Documentation/blob/Nikita-SCRUM-8/OT%20MS%20Understanding/Applications/Salary/POC/README.md)
+
+- After configuring all the things make sure to run the API
+  
+# Runnig the API
+
+``` bash
+http://localhost:8080/salary-documentation
+```
+- **Note:-** Here instead of using localhost use your public ip address so that you can connect to swagger ui
+
+  ![image](https://github.com/user-attachments/assets/164f9e50-a333-44c1-84d9-49d47e0afd0c)
+
+  ![image](https://github.com/user-attachments/assets/3ea3b791-9c32-4215-be04-f7038cafe97c)
+
+  ![image](https://github.com/user-attachments/assets/ac958552-b659-4c6a-92dc-6ced78931a4d)
+
+  # API Endpoint Information
+
+| **Endpoint**                   | **Method** | **Description**                                                                               |
+|--------------------------------|------------|-----------------------------------------------------------------------------------------------|
+| `/api/v1/salary/create/record` | POST       | Data creation endpoint which accepts certain JSON body to add salary information in database  |
+| `/api/v1/salary/search`        | GET        | Endpoint for searching data information using the params in the URL                           |
+| `/api/v1/salary/search/all`    | GET        | Endpoint for searching all information across the system                                      |
+| `/actuator/health`             | GET        | Endpoint for providing shallow health check information about application health and readiness|
+
+
+
+
+
+  
+
+  
 
