@@ -19,10 +19,10 @@ ___
 
 |   System Requirement              |             Minimum                        |
 |-----------------------------------|--------------------------------------------|
-| Processor/Instance Type           |             Dual Core/t2.medium            | 
-| RAM                               |               4GB                          |
-| Disk Space                        |               16GB                         |            
-| OS Required | Ubuntu   |
+| **Processor/Instance Type**           |             Dual Core/t2.medium            | 
+| **RAM**                              |               4GB                          |
+| **Disk Space**                        |               16GB                         |            
+| **OS Required** | Ubuntu 22.04 or 24.04 |
 
 
 ___
@@ -67,15 +67,15 @@ ___
 
 |   Port        |    Description     |
 | ----------    |    -----------     |
-|    8080       |   Salary  API port | 
-|    22         |    SSH            |
+|    **8080**       |   Salary  API port | 
+|    **22**         |    SSH            |
 
 ## Outbound Port
 
 |   Port        |    Description    |
 | ----------    |    -----------    |
-|    9042       |    Scylla DB      |
-|    6379       |    Redis          |
+|    **9042**      |    Scylla DB      |
+|    **6379**      |    Redis          |
 
 
 
@@ -83,26 +83,33 @@ ___
 # Build-Time Dependencies (Required to compile the application)
 These dependencies are needed only during the build process to compile the source code and generate a runnable JAR file.
 
-- **Java 17 (JDK)** – Required to compile the Java code.
-- **Maven** – Used as the build tool to resolve dependencies, compile the project, and package it as a JAR file.
+|   **Dependency**      |    **Purpose**   |
+| ----------    |    -----------    |
+|  **Java 17 (JDK)** |   Required to compile the Java code.     |
+|    **Maven**     |    Used as the build tool to resolve dependencies, compile the project, and package it as a JAR file.          |
+
 
 # Run-Time Dependencies (Required when running the application)
+
 These dependencies must be available when running the built application.
 
-- **Java 17 (JRE)** – Required to execute the JAR file.
-- **ScyllaDB** – Primary database for storing salary records.
-- **Redis** – Cache manager for fast retrieval of salary data.
-- **Migrate** – Used for applying database migrations before running the application.
+|   **Dependency**      |    **Purpose**  |
+| ----------    |    -----------    |
+| **Java 17 (JRE)**  |  Required to execute the JAR file.    |
+| **ScyllaDB**       |   Primary database for storing salary records. |
+| **Redis**     |    Cache manager for fast retrieval of salary data. |
+| **Migrate**    |  Used for applying database migrations before running the application.|
+
 ___
 # Summary
 
 | Dependency   | Build-Time | Run-Time |
 |-------------|-----------|----------|
-| Java 17 (JDK) | ✅ | ✅ (JRE) |
-| Maven | ✅ | ❌ |
-| ScyllaDB | ❌ | ✅ |
-| Redis | ❌ | ✅ |
-| Migrate | ❌ | ✅ |
+| **Java 17 (JDK)** | ✅ | ✅ (JRE) |
+| **Maven** | ✅ | ❌ |
+| **ScyllaDB** | ❌ | ✅ |
+| **Redis** | ❌ | ✅ |
+| **Migrate** | ❌ | ✅ |
 ___
 # Architecture
 
@@ -112,14 +119,14 @@ ___
 # SETUP API  
 For a comprehensive, step-by-step guide on setting up the API, follow this link: [Salary Setup](https://github.com/snaatak-Zero-Downtime-Crew/Documentation/blob/Nikita-SCRUM-8/OT%20MS%20Understanding/Applications/Salary/POC/README.md)
 
-- After configuring all the things make sure to run the API
+- After configuring everything, make sure to run the API.
 ___  
 # Runnig the API
 
 ``` bash
 http://localhost:8080/salary-documentation
 ```
-- **Note:-** Here instead of using localhost use your public ip address so that you can connect to swagger ui
+- **Note:-** Instead of using localhost, use your public IP address so that you can connect to Swagger UI
 
   ![image](https://github.com/user-attachments/assets/164f9e50-a333-44c1-84d9-49d47e0afd0c)
 
@@ -131,11 +138,11 @@ ___
 
 | **Endpoint**                   | **Method** | **Description**                                                                               |
 |--------------------------------|------------|-----------------------------------------------------------------------------------------------|
-| `/api/v1/salary/create/record` | POST       | Data creation endpoint which accepts certain JSON body to add salary information in database  |
-| `/api/v1/salary/search`        | GET        | Endpoint for searching data information using the params in the URL                           |
-| `/api/v1/salary/search/all`    | GET        | Endpoint for searching all information across the system                                      |
-| `/actuator/prometheus`         | GET        | Application healthcheck and performance metrics are available on this endpoint                |
-| `/actuator/health`             | GET        | Endpoint for providing shallow healthcheck information about application health and readiness |
+| **`/api/v1/salary/create/record`** | POST       | Data creation endpoint which accepts certain JSON body to add salary information in database  |
+| **`/api/v1/salary/search`**        | GET        | Endpoint for searching data information using the params in the URL                           |
+| **`/api/v1/salary/search/all`**    | GET        | Endpoint for searching all information across the system                                      |
+| **`/actuator/prometheus`**         | GET        | Application healthcheck and performance metrics are available on this endpoint                |
+| **`/actuator/health`**             | GET        | Endpoint for providing shallow healthcheck information about application health and readiness |
 
 ___
 
