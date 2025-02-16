@@ -10,7 +10,7 @@
 |------------|---------------------------|-------------|---------------------|-------------|-------------|-------------|-------------|
 | Mohit Kumar|   10-02-2025             | v1          | Mohit kumar       |  Komal Jaiswal |  |   |      |
 
-
+___
 # Purpose
 The purpose of this document is to provide a comprehensive guide on the Salary API, a Java-based microservice responsible for managing all salary-related transactions and records within the **[OT-Microservices](https://github.com/OT-MICROSERVICES/salary-api)** stack 
 This platform-independent application can run on multiple operating systems with **[Java Runtime](https://www.java.com/en/download/manual.jsp)** as a requirement.
@@ -101,17 +101,17 @@ ___
 | ScyllaDB | ❌ | ✅ |
 | Redis | ❌ | ✅ |
 | Migrate | ❌ | ✅ |
-
+___
 # Architecture
 
 ![image](https://github.com/user-attachments/assets/62b88055-9d8f-4f07-8ac8-ae341bee59ce)
 
-
+___
 # SETUP API  
 For a comprehensive, step-by-step guide on setting up the API, follow this link: [Salary Setup](https://github.com/snaatak-Zero-Downtime-Crew/Documentation/blob/Nikita-SCRUM-8/OT%20MS%20Understanding/Applications/Salary/POC/README.md)
 
 - After configuring all the things make sure to run the API
-  
+___  
 # Runnig the API
 
 ``` bash
@@ -124,7 +124,7 @@ http://localhost:8080/salary-documentation
   ![image](https://github.com/user-attachments/assets/3ea3b791-9c32-4215-be04-f7038cafe97c)
 
   ![image](https://github.com/user-attachments/assets/ac958552-b659-4c6a-92dc-6ced78931a4d)
-
+___
   # API Endpoint Information
 
 | **Endpoint**                   | **Method** | **Description**                                                                               |
