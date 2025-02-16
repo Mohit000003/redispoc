@@ -125,15 +125,17 @@ http://localhost:8080/salary-documentation
 
   ![image](https://github.com/user-attachments/assets/ac958552-b659-4c6a-92dc-6ced78931a4d)
 ___
-  # API Endpoint Information
+## Endpoint Information
 
 | **Endpoint**                   | **Method** | **Description**                                                                               |
 |--------------------------------|------------|-----------------------------------------------------------------------------------------------|
 | `/api/v1/salary/create/record` | POST       | Data creation endpoint which accepts certain JSON body to add salary information in database  |
 | `/api/v1/salary/search`        | GET        | Endpoint for searching data information using the params in the URL                           |
 | `/api/v1/salary/search/all`    | GET        | Endpoint for searching all information across the system                                      |
-| `/actuator/health`             | GET        | Endpoint for providing shallow health check information about application health and readiness|
+| `/actuator/prometheus`         | GET        | Application healthcheck and performance metrics are available on this endpoint                |
+| `/actuator/health`             | GET        | Endpoint for providing shallow healthcheck information about application health and readiness |
 
+___
 
 ## Contact Information
 
@@ -141,6 +143,7 @@ ___
 |----------|-------------------------------|
 | Mohit kumar   |  mohit.kumar@mygurukulam.co          |
 
+___
 ## References
 
 |     Description                  | References  
