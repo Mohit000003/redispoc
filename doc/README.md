@@ -216,10 +216,10 @@ ___
 ___
 ## References
 
-|     Description                  | References  
-| ---------------------------------| ------------------------------------------------------------------- |
-|     Salary POC      | https://github.com/snaatak-Zero-Downtime-Crew/Documentation/blob/Nikita-SCRUM-8/OT%20MS%20Understanding/Applications/Salary/POC/README.md |
-|     Salary Documentation         | |  
+| Resource                 | Link |
+|-------------------------|------|
+| Salary API POC Guide    | [Salary POC](https://github.com/snaatak-Zero-Downtime-Crew/Documentation/blob/Nikita-SCRUM-8/OT%20MS%20Understanding/Applications/Salary/POC/README.md) |
+| Salary API Documentation | [Salary Documentation](https://github.com/snaatak-Zero-Downtime-Crew/Documentation/edit/Mohit_SCRUM_9/OT%20MS%20Understanding/Applications/Salary/Documentation/README.md) |
 
 
 
