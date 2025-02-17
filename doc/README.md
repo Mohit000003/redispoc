@@ -10,6 +10,34 @@
 |------------|---------------------------|-------------|---------------------|-------------|-------------|-------------|-------------|
 | Mohit Kumar|   10-02-2025             | v1          | Mohit kumar       |  Komal Jaiswal |  |   |      |
 
+
+# Table of Contents
+
+1. [Purpose](#purpose)
+2. [System Requirements](#system-requirements)
+3. [Pre-Requisites](#pre-requisites)
+    1. [Mandatory Dependencies](#mandatory-dependencies)
+    2. [Development Dependency](#development-dependency)
+4. [Key Components](#key-components)
+    1. [Framework & Language](#framework--language)
+    2. [Database & Cache](#database--cache)
+    3. [Monitoring & Observability](#monitoring--observability)
+    4. [API Documentation](#api-documentation)
+    5. [Migration](#migration)
+    6. [Testing & Code Quality](#testing--code-quality)
+5. [Important Ports](#important-ports)
+    1. [Inbound Ports](#inbound-ports)
+    2. [Outbound Ports](#outbound-ports)
+6. [Dependencies](#dependencies)
+    1. [Build-Time Dependencies](#build-time-dependencies)
+    2. [Run-Time Dependencies](#run-time-dependencies)
+7. [Architecture](#architecture)
+8. [Setup API](#setup-api)
+9. [Running the API](#running-the-api)
+10. [Endpoint Information](#endpoint-information)
+11. [Contact Information](#contact-information)
+12. [References](#references)
+
 ___
 # Purpose
 The purpose of this document is to provide a comprehensive guide on the Salary API, a Java-based microservice responsible for managing all salary-related transactions and records within the **[OT-Microservices](https://github.com/OT-MICROSERVICES/salary-api)** stack 
