@@ -18,9 +18,8 @@
 3. [Pre-Requisites](#pre-requisites)
 4. [Key Components](#key-components)
 5. [Important Ports](#important-ports)
-6. [Build-Time Dependencies](#build-time-dependencies)
-7. [Run-Time Dependencies](#run-time-dependencies)
-8. [Salary API Architecture](#salary-api-architecture)
+6. [Dependencies](#dependencies)
+7. [Salary API Architecture](#salary-api-architecture)
 8. [Setup API](#setup-api)
 9. [Running the API](#running-the-api)
 10. [Endpoint Information](#endpoint-information)
@@ -97,26 +96,25 @@ ___
 
 
 ___
-# Build-Time Dependencies 
+# Dependencies
+
+## Build-Time Dependencies
 These dependencies are needed only during the build process to compile the source code and generate a runnable JAR file.
 
-|   **Dependency**      |    **Purpose**   |
-| ----------    |    -----------    |
-|  **Java 17 (JDK)** |   Required to compile the Java code.     |
-|    **Maven**     |    Used as the build tool to resolve dependencies, compile the project, and package it as a JAR file.          |
+| **Dependency**     | **Purpose**                                           |
+| ------------------ | ----------------------------------------------------- |
+| **Java 17 (JDK)**  | Required to compile the Java code.                   |
+| **Maven**          | Used as the build tool to resolve dependencies, compile the project, and package it as a JAR file. |
 
-
-# Run-Time Dependencies 
-
+## Run-Time Dependencies
 These dependencies must be available when running the built application.
 
-|   **Dependency**      |    **Purpose**  |
-| ----------    |    -----------    |
-| **Java 17 (JRE)**  |  Required to execute the JAR file.    |
-| **ScyllaDB**       |   Primary database for storing salary records. |
-| **Redis**     |    Cache manager for fast retrieval of salary data. |
-| **Migrate**    |  Used for applying database migrations before running the application.|
-
+| **Dependency**     | **Purpose**                                           |
+| ------------------ | ----------------------------------------------------- |
+| **Java 17 (JRE)**  | Required to execute the JAR file.                    |
+| **ScyllaDB**       | Primary database for storing salary records.         |
+| **Redis**          | Cache manager for fast retrieval of salary data.     |
+| **Migrate**        | Used for applying database migrations before running the application. |
 ___
 # Summary
 
@@ -135,61 +133,60 @@ ___
 **This architecture represents a caching strategy to optimize data retrieval for a Salary API, using Redis as a cache and ScyllaDB as the primary database. Let’s break it down step by step:**
 
 
-## 🔥 Why This Architecture?
+##  Why This Architecture?
 
-### ⚡ Performance Optimization  
-Fetching data from a database every time a request is made can be **slow** and **resource-intensive**.  
+- ### Performance Optimization  
+Fetching data from the database can be slow and use a lot of resources. Using a **caching layer (Redis)** helps store frequently used data, making requests faster and reducing database load.
+ 
 
-🚀 **Solution:** A **caching layer (Redis)** stores frequently accessed data, reducing database load and **boosting response times**.  
+- ###  Efficient Data Flow  
+1️ **Step 1:** The **Salary API** first checks **Redis** for cached data.  
+2️ **Step 2:** If data is found (**cache hit**), it is **returned instantly**—no database query needed!  
+3️ **Step 3:** If data is **not in Redis** (**cache miss**), it queries **ScyllaDB**, retrieves the data, and **stores it in Redis** for future use.  
 
-### 🔄 Efficient Data Flow  
-1️⃣ **Step 1:** The **Salary API** first checks **Redis** for cached data.  
-2️⃣ **Step 2:** If data is found (**cache hit**), it is **returned instantly**—no database query needed!  
-3️⃣ **Step 3:** If data is **not in Redis** (**cache miss**), it queries **ScyllaDB**, retrieves the data, and **stores it in Redis** for future use.  
-
-### 📈 Scalability & Reliability  
-✅ **ScyllaDB** → A **high-performance NoSQL database** for handling **large-scale** data efficiently.  
-✅ **Redis** → A **lightning-fast in-memory store**, ensuring **quick data retrieval**.  
-✅ **Perfect Pair:** Together, they enable **high availability**, **fast responses**, and **smooth scalability** as demand grows.  
-
----
-
-## ⚙️ How It Works?  
-
-### 🛠️ API Request & Cache Check  
-📌 When the **Salary API** receives a request:  
-- 🔹 It first checks **Redis** for cached data.  
-- 🔹 If **data is found**, it is **immediately returned** ✅.  
-
-### ❌ Cache Miss & Database Query  
-📌 If **data is NOT in Redis**:  
-- 🔹 The system queries **ScyllaDB** to retrieve the data.  
-- 🔹 Once fetched, the **data is stored in Redis** for future requests.  
-
-### 📊 Data Migrations & Updates  
-- 🔄 **Migrations Component** ensures **ScyllaDB's data structure remains up to date**.  
-- 📢 Any **new schema changes** are applied seamlessly.  
+- ###  Scalability & Reliability  
+ **ScyllaDB** → A **high-performance NoSQL database** for handling **large-scale** data efficiently.  
+ **Redis** → A **lightning-fast in-memory store**, ensuring **quick data retrieval**.  
+ **Perfect Pair:** Together, they enable **high availability**, **fast responses**, and **smooth scalability** as demand grows.  
 
 ---
 
-## ⚠️ What Happens If We Don't Use This?  
+##  How It Works?  
 
-| ⚡ **Scenario** | ❌ **Issue** |
+- ###  API Request & Cache Check  
+     When the **Salary API** receives a request:  
+  -  It first checks **Redis** for cached data.  
+  -  If **data is found**, it is **immediately returned** .  
+
+- ### Cache Miss & Database Query  
+     If **data is NOT in Redis**:  
+  -  The system queries **ScyllaDB** to retrieve the data.  
+  -  Once fetched, the **data is stored in Redis** for future requests.  
+
+- ###  Data Migrations & Updates  
+  -  **Migrations Component** ensures **ScyllaDB's data structure remains up to date**.  
+  -  Any **new schema changes** are applied seamlessly.  
+
+---
+
+##  What Happens If We Don't Use This?  
+
+|  **Scenario** |  **Issue** |
 |---------------|-------------|
-| 🚫 **No Redis (Cache)** | API would directly hit **ScyllaDB** every time, increasing **latency** and **slowing down responses**. Also, it **overloads the database**, affecting performance. |
-| 🚫 **No ScyllaDB (Only Redis)** | Redis is an **in-memory cache**, not permanent storage. Data would be **lost if Redis restarts** or crashes. |
-| 🚫 **No Caching Strategy** | **API response times slow down** ⏳, **user experience suffers** 😡, and **the system struggles under heavy loads**. |
+|  **No Redis (Cache)** | API would directly hit **ScyllaDB** every time, increasing **latency** and **slowing down responses**. Also, it **overloads the database**, affecting performance. |
+|  **No ScyllaDB (Only Redis)** | Redis is an **in-memory cache**, not permanent storage. Data would be **lost if Redis restarts** or crashes. |
+|  **No Caching Strategy** | **API response times slow down** , **user experience suffers** , and **the system struggles under heavy loads**. |
 
 ---
 
-## 🎯 Conclusion: The Perfect Balance!  
+##  Conclusion:-  
 
-✅ **Redis + ScyllaDB = High-Performance, Scalable, and Reliable System**  
-✅ **Faster API responses** 🚀  
-✅ **Lower database load** 📉  
-✅ **Better user experience** 😀  
+ - **Redis + ScyllaDB = High-Performance, Scalable, and Reliable System**  
+ - **Faster API responses**   
+ - **Lower database load**   
+ - **Better user experience**  
 
-This architecture ensures **efficiency, speed, and robustness** for your **Salary API** while **handling large-scale traffic like a pro**! 💪🔥  
+This architecture ensures **efficiency, speed, and robustness** for your **Salary API** while **handling large-scale traffic like a pro**!   
 
 
 
