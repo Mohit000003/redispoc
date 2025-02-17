@@ -111,13 +111,12 @@ ___
 | **Redis** | ❌ | ✅ |
 | **Migrate** | ❌ | ✅ |
 ___
-# Architecture
+# 🚀 Salary API Architecture
 
 ![image](https://github.com/user-attachments/assets/62b88055-9d8f-4f07-8ac8-ae341bee59ce)
 
-This architecture represents a caching strategy to optimize data retrieval for a Salary API, using Redis as a cache and ScyllaDB as the primary database. Let’s break it down step by step:
+**This architecture represents a caching strategy to optimize data retrieval for a Salary API, using Redis as a cache and ScyllaDB as the primary database. Let’s break it down step by step:**
 
-# 🚀 Salary API Architecture
 
 ## 🔥 Why This Architecture?
 
