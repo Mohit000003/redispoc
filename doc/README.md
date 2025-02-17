@@ -16,22 +16,11 @@
 1. [Purpose](#purpose)
 2. [System Requirements](#system-requirements)
 3. [Pre-Requisites](#pre-requisites)
-    1. [Mandatory Dependencies](#mandatory-dependencies)
-    2. [Development Dependency](#development-dependency)
 4. [Key Components](#key-components)
-    1. [Framework & Language](#framework--language)
-    2. [Database & Cache](#database--cache)
-    3. [Monitoring & Observability](#monitoring--observability)
-    4. [API Documentation](#api-documentation)
-    5. [Migration](#migration)
-    6. [Testing & Code Quality](#testing--code-quality)
 5. [Important Ports](#important-ports)
-    1. [Inbound Ports](#inbound-ports)
-    2. [Outbound Ports](#outbound-ports)
-6. [Dependencies](#dependencies)
-    1. [Build-Time Dependencies](#build-time-dependencies)
-    2. [Run-Time Dependencies](#run-time-dependencies)
-7. [Architecture](#architecture)
+6. [Build-Time Dependencies](#build-time-dependencies)
+7. [Run-Time Dependencies](#run-time-dependencies)
+8. [Salary API Architecture](#salary-api-architecture)
 8. [Setup API](#setup-api)
 9. [Running the API](#running-the-api)
 10. [Endpoint Information](#endpoint-information)
@@ -108,7 +97,7 @@ ___
 
 
 ___
-# Build-Time Dependencies (Required to compile the application)
+# Build-Time Dependencies 
 These dependencies are needed only during the build process to compile the source code and generate a runnable JAR file.
 
 |   **Dependency**      |    **Purpose**   |
@@ -117,7 +106,7 @@ These dependencies are needed only during the build process to compile the sourc
 |    **Maven**     |    Used as the build tool to resolve dependencies, compile the project, and package it as a JAR file.          |
 
 
-# Run-Time Dependencies (Required when running the application)
+# Run-Time Dependencies 
 
 These dependencies must be available when running the built application.
 
@@ -139,7 +128,7 @@ ___
 | **Redis** | ❌ | ✅ |
 | **Migrate** | ❌ | ✅ |
 ___
-# 🚀 Salary API Architecture
+#  Salary API Architecture
 
 ![image](https://github.com/user-attachments/assets/62b88055-9d8f-4f07-8ac8-ae341bee59ce)
 
@@ -210,7 +199,7 @@ For a comprehensive, step-by-step guide on setting up the API, follow this link:
 
 - After configuring everything, make sure to run the API.
 ___  
-# Runnig the API
+# Running the API
 
 ``` bash
 http://localhost:8080/salary-documentation
