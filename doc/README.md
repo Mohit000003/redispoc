@@ -211,27 +211,26 @@ ___
 **A1:** - **JDK**: Java Development Kit, includes tools for developing Java applications (e.g., compiler).  
   - **JRE**: Java Runtime Environment, required to run Java applications, doesn't include development tools.
 
----
+
 
 ## Q2: Is `migrate` dependent on `jq`?
 **A2:**  No, but `jq` is used for processing JSON migration files. If you're not working with JSON, `jq` isn’t necessary.
 
----
 
 ## Q3: What happens if we don't use Redis as cache?
 **A3:** Without Redis, every API request hits the database, slowing down the response time and increasing database load.
 
----
+
 
 ## Q4: What if there's no ScyllaDB?
 **A4:** Without ScyllaDB, Redis would lose data on restart, since Redis is an in-memory cache and not permanent storage.
 
----
+
 
 ## Q5: What if there's no caching strategy?
 **A5:**  API response times would slow down, user experience suffers, and the system struggles under high load.
 
----
+
 
 ## Q6: Why is caching important in this architecture?
 **A6:**  Caching with Redis speeds up data retrieval, reduces database load, and improves overall performance.
