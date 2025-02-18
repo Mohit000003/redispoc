@@ -99,14 +99,17 @@ ___
 # Dependencies
 
 ## Build-Time Dependencies
+
 These dependencies are needed only during the build process to compile the source code and generate a runnable JAR file.
 
 | **Dependency**     | **Purpose**                                           |
 | ------------------ | ----------------------------------------------------- |
 | **Java 17 (JDK)**  | Required to compile the Java code.                   |
 | **Maven**          | Used as the build tool to resolve dependencies, compile the project, and package it as a JAR file. |
+| **Make**           | Used to automate the build process using predefined commands in the Makefile. |
 
 ## Run-Time Dependencies
+
 These dependencies must be available when running the built application.
 
 | **Dependency**     | **Purpose**                                           |
@@ -115,17 +118,9 @@ These dependencies must be available when running the built application.
 | **ScyllaDB**       | Primary database for storing salary records.         |
 | **Redis**          | Cache manager for fast retrieval of salary data.     |
 | **Migrate**        | Used for applying database migrations before running the application. |
+| **JQ**             | Used for processing JSON migration files (`migration.json`). |
 ___
-# Summary
 
-| Dependency   | Build-Time | Run-Time |
-|-------------|-----------|----------|
-| **Java 17 (JDK)** | ✅ | ✅ (JRE) |
-| **Maven** | ✅ | ❌ |
-| **ScyllaDB** | ❌ | ✅ |
-| **Redis** | ❌ | ✅ |
-| **Migrate** | ❌ | ✅ |
-___
 #  Salary API Architecture
 
 ![image](https://github.com/user-attachments/assets/62b88055-9d8f-4f07-8ac8-ae341bee59ce)
