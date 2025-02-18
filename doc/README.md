@@ -23,8 +23,9 @@
 8. [Setup API](#setup-api)
 9. [Running the API](#running-the-api)
 10. [Endpoint Information](#endpoint-information)
-11. [Contact Information](#contact-information)
-12. [References](#references)
+11. [Frequently Asked Questions (FAQs)](#frequently-asked-questions-faqs)
+12. [Contact Information](#contact-information)
+13. [References](#references)
 
 ___
 # Purpose
@@ -164,16 +165,6 @@ Fetching data from the database can be slow and use a lot of resources. Using a 
 
 ---
 
-##  What Happens If We Don't Use This?  
-
-|  **Scenario** |  **Issue** |
-|---------------|-------------|
-|  **No Redis (Cache)** | API would directly hit **ScyllaDB** every time, increasing **latency** and **slowing down responses**. Also, it **overloads the database**, affecting performance. |
-|  **No ScyllaDB (Only Redis)** | Redis is an **in-memory cache**, not permanent storage. Data would be **lost if Redis restarts** or crashes. |
-|  **No Caching Strategy** | **API response times slow down** , **user experience suffers** , and **the system struggles under heavy loads**. |
-
----
-
 ##  Conclusion:-  
 
  - **Redis + ScyllaDB = High-Performance, Scalable, and Reliable System**  
@@ -183,11 +174,9 @@ Fetching data from the database can be slow and use a lot of resources. Using a 
 
 This architecture ensures **efficiency, speed, and robustness** for your **Salary API** while **handling large-scale traffic like a pro**!   
 
-
-
 ___
 # SETUP API  
-For a comprehensive, step-by-step guide on setting up the API, follow this link: [Salary Setup](https://github.com/snaatak-Zero-Downtime-Crew/Documentation/blob/Nikita-SCRUM-8/OT%20MS%20Understanding/Applications/Salary/POC/README.md)
+For a comprehensive, step-by-step guide on setting up the API, follow this link: [Salary API Setup](https://github.com/snaatak-Zero-Downtime-Crew/Documentation/blob/Nikita-SCRUM-8/OT%20MS%20Understanding/Applications/Salary/POC/README.md)
 
 - After configuring everything, make sure to run the API.
 ___  
@@ -204,7 +193,7 @@ http://localhost:8080/salary-documentation
 
   ![image](https://github.com/user-attachments/assets/ac958552-b659-4c6a-92dc-6ced78931a4d)
 ___
-## Endpoint Information
+# Endpoint Information
 
 | **Endpoint**                   | **Method** | **Description**                                                                               |
 |--------------------------------|------------|-----------------------------------------------------------------------------------------------|
@@ -216,6 +205,38 @@ ___
 
 ___
 
+# Frequently Asked Questions (FAQs)
+
+## Q1: What's the difference between JDK and JRE?
+**A1:** - **JDK**: Java Development Kit, includes tools for developing Java applications (e.g., compiler).  
+  - **JRE**: Java Runtime Environment, required to run Java applications, doesn't include development tools.
+
+---
+
+## Q2: Is `migrate` dependent on `jq`?
+**A2:**  No, but `jq` is used for processing JSON migration files. If you're not working with JSON, `jq` isn’t necessary.
+
+---
+
+## Q3: What happens if we don't use Redis as cache?
+**A3:** Without Redis, every API request hits the database, slowing down the response time and increasing database load.
+
+---
+
+## Q4: What if there's no ScyllaDB?
+**A4:** Without ScyllaDB, Redis would lose data on restart, since Redis is an in-memory cache and not permanent storage.
+
+---
+
+## Q5: What if there's no caching strategy?
+**A5:**  API response times would slow down, user experience suffers, and the system struggles under high load.
+
+---
+
+## Q6: Why is caching important in this architecture?
+**A6:**  Caching with Redis speeds up data retrieval, reduces database load, and improves overall performance.
+
+___
 ## Contact Information
 
 | **Name** | **Email address**            |
