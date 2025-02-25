@@ -8,7 +8,7 @@
 
 # Table of Contents
 
-- [Introduction](#introduction)  
+- [Introduction](#introduction) 
 - [Understanding Git Authentication](#understanding-git-authentication)  
 - [Pre-Requisites for Git Configuration](#pre-requisites-for-git-configuration)  
 - [Step-by-Step Setup Guide](#step-by-step-setup-guide)  
